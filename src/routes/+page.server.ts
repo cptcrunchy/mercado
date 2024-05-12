@@ -7,9 +7,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 const actions: Actions = {
 	default: async ({ request }) => {
 		const form = await superValidate(request, zod(fortuneSchema));
-		console.log(form.data.patronName);
-		const fortune = await fortuneTeller(form.data.patronName);
-
+		const fortune = await fortuneTeller(form.data.patron);
 		return message(form, fortune);
 	}
 };
